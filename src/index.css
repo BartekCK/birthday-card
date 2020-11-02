@@ -1,13 +1,107 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+    font-family: "Pacifico-Regular";
+    src: local("Pacifico-Regular"),
+    url("./assets/Pacifico-Regular.ttf") format("truetype");
+    font-weight: normal;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    margin: 0;
+    font-family: Pacifico-Regular;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+.App {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+
+    background-image: url('./assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.App h1 {
+    z-index: 2;
+    color: aliceblue;
+    text-shadow: 2px 7px #393333;
+}
+
+.invisible {
+    z-index: 3;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.invisible img {
+    z-index: 3;
+    position: absolute;
+    width: 10%;
+    height: auto;
+    /*transition: opacity 0.5s ease-in-out;*/
+    animation: animatedBaloon 1.5s linear forwards;
+}
+
+@keyframes animatedBaloon {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+    25% {
+        transform: translate(-100px, -100px);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(0px, -200px);
+    }
+    75% {
+        transform: translate(100px, -300px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0px, -400px);
+        opacity: 0;
+    }
+}
+
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/heart.png');
+    background-repeat: no-repeat;
+    /*background-size: contain, cover;*/
+    background-size: contain, 100%;
+    background-position: center;
+    animation: animatedBackground 0.7s ease-out infinite alternate;
+}
+
+@media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    h1 {
+        font-size: 27px;
+    }
+}
+
+@keyframes animatedBackground {
+    from {
+        transform: scale(0.9);
+    }
+    to {
+        transform: scale(1);
+    }
 }
